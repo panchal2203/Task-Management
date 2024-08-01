@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"rinku12\",\n    \"password\": \"pradeep\",\n    \"email\" : \"pra11deep@gamil.com\"\n}",
+							"raw": "{\n    \"username\": \"pradeep1\",\n    \"password\": \"pradeep12\",\n    \"email\" : \"pradeep1@gamil.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,11 +41,21 @@
 				{
 					"name": "login",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUyODEyLCJpYXQiOjE3MjI1MTY4MTJ9.bWV-vC-G5KIw6UCAL0GEz41J3gcv-PD7V1golBI_GD0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"rinku121\",\n    \"password\": \"pradeep\"\n}",
+							"raw": "{\n    \"username\": \"pradeep\",\n    \"password\": \"pradeep12\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,7 +85,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEyIiwiZXhwIjoxNzIyMzcyODQ3LCJpYXQiOjE3MjIzNjkyNDd9.ixGGykszE8mCEIEi0nXtORDdYhz8PB7yhFyNuJuspPk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUyODEyLCJpYXQiOjE3MjI1MTY4MTJ9.bWV-vC-G5KIw6UCAL0GEz41J3gcv-PD7V1golBI_GD0",
 									"type": "string"
 								}
 							]
@@ -84,7 +94,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"rinku11\",\n    \"email\" : \"6344556612\"\n}",
+							"raw": "{\n    \"username\": \"pradeep12\",\n    \"email\" : \"pradeep@gamil.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -114,7 +124,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEyIiwiZXhwIjoxNzIyMzcyODI4LCJpYXQiOjE3MjIzNjkyMjh9.sRpO5dJzx5ZcRv7Hqp9fLZ7wy9q1_-TvDtsalQVFVuc",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUxODU2LCJpYXQiOjE3MjI1MTU4NTZ9.5HaLTX07wq7DcHmoElXh90Uwo-8QvoSXqCQUJVIan6A",
 									"type": "string"
 								}
 							]
@@ -131,7 +141,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/1",
+							"raw": "http://localhost:8080/users/delete/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -139,7 +149,8 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"1"
+								"delete",
+								"2"
 							]
 						}
 					},
@@ -196,7 +207,14 @@
 					"name": "Add Task",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTExMSIsImV4cCI6MTcyMjU1MTcxMCwiaWF0IjoxNzIyNTE1NzEwfQ.JXWnhX54fgUJZiPMjl2uEdlI3x5WoJ575-s0Lu5E8Zc",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -226,11 +244,21 @@
 				{
 					"name": "Update Task",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"task 1\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"30-07-2024\"\n}",
+							"raw": "{\n    \"title\": \"task\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"30-08-2024\",\n    \"userId\":\"1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -238,14 +266,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:7501/api/tasks/1",
+							"raw": "http://localhost:8081/tasks/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "7501",
+							"port": "8081",
 							"path": [
-								"api",
 								"tasks",
 								"1"
 							]
@@ -256,6 +283,16 @@
 				{
 					"name": "Delete Task",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -268,14 +305,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:7501/api/tasks/1",
+							"raw": "http://localhost:8081/tasks/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "7501",
+							"port": "8081",
 							"path": [
-								"api",
 								"tasks",
 								"1"
 							]
@@ -286,6 +322,16 @@
 				{
 					"name": "Complete Task",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -298,16 +344,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:7501/api/tasks/1/complete",
+							"raw": "http://localhost:8081/tasks/2/complete",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "7501",
+							"port": "8081",
 							"path": [
-								"api",
 								"tasks",
-								"1",
+								"2",
 								"complete"
 							]
 						}
@@ -320,6 +365,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTExMSIsImV4cCI6MTcyMjU1MTcxMCwiaWF0IjoxNzIyNTE1NzEwfQ.JXWnhX54fgUJZiPMjl2uEdlI3x5WoJ575-s0Lu5E8Zc",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -332,17 +387,21 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:7501/api/tasks/getAllTasks/1",
+							"raw": "http://localhost:8081/tasks/allTasks?userId=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "7501",
+							"port": "8081",
 							"path": [
-								"api",
 								"tasks",
-								"getAllTasks",
-								"1"
+								"allTasks"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
 							]
 						}
 					},

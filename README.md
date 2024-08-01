@@ -3,17 +3,18 @@ The application consists of multiple microservices that handle user management, 
 
 **Steps for executing the application using docker-compose:**
 
-Prerequisites: Docker desktop installed, maven installed,
+Prerequisites: Docker desktop, maven.
 
 1. Clone/Download the repository.
 
-3. Build all the microservices and run the app using docker-compose. This is done using ./start-all.sh script which creates the network and set the container dependencies based on the config mention in the docker-compose.yml. 
+2. Build all the microservices and run the app using docker-compose. This is done using ./start-all.sh script which creates the network and set the container dependencies based on the config mention in the docker-compose.yml and env. 
    This will build all the jar files and run all the services.
    ```
       ./start-all.sh
    ```
-4. To access apis, import postman api collection from [docs/Task Management.postman_collection.json]
- 
+3. To access apis, import postman api collection from ./docs/Task Management.postman_collection.json.
+
+4. Register user with username, password and emailId. Access token will be returned in response, pass this token as bearer token in postman for authorization of other apis.
 
  **FEATURES**
 
@@ -26,9 +27,4 @@ Prerequisites: Docker desktop installed, maven installed,
 
 **TOOLS USED**
 
-- **Spring Boot :** Back-end java framework to build microservices using Spring Rest Controller and Spring JPA.
-- **Spring Security :** User authentication and authorization using jwt.
-- **Postgres:** Stores user and task information.
-- **Docker-Compose:** Easy way to bring up the application using containerization and behaves similarly in the production environment.
-- **pgadmin:** Plateform to access postgres database.
-- **kafka:** Distributed event store and stream-processing platform. 
+- Spring Framework, Postgres, PgAdmin, Docker, Kafka, Postman
