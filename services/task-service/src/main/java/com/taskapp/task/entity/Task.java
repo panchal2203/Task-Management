@@ -28,6 +28,7 @@ public class Task {
     @Column(nullable = false)
     private LocalDate creationDate;
 
+    @Column(nullable = false)
     private Long userId;
 }
 
