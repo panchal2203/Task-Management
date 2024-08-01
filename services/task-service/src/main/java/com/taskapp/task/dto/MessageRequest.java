@@ -10,6 +10,5 @@ import lombok.Value;
 @NoArgsConstructor
 public class MessageRequest {
     private String emailId;
-    private String messageHeader;
     private String messageContent;
 }

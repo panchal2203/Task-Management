@@ -37,7 +37,7 @@ public class UserController {
         if (response.isSuccess()) {
             try {
                 String token = getJwtToken(userDTO.getUsername(), userDTO.getPassword());
-                response = new ApiResponse<>(true, "User registered successfully.", new LoginResponse(token));
+                response = new ApiResponse<>(true, response.getMessage(), new LoginResponse(token));
             } catch (Exception e) {
                 response = new ApiResponse<>(false, e.getMessage());
             }

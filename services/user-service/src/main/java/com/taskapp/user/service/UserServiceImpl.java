@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
                 user.setEmail(userDTO.getEmail());
                 user.setAuthority(Authority.ROLE_USER);
                 userRepository.save(user);
-                return new ApiResponse<>(true, "User registered successfully");
+                return new ApiResponse<>(true, "User registered successfully with userId -> " + user.getId());
             } else {
                 return new ApiResponse<>(false, errorMessage);
             }
@@ -115,6 +115,7 @@ public class UserServiceImpl implements UserService {
                 userDTO.setId(user.getId());
                 userDTO.setUsername(user.getUsername());
                 userDTO.setEmail(user.getEmail());
+                userDTO.setTaskDTOList(getTasksByUserId(user.getId()));
                 return new ApiResponse<>(true, "Success.", userDTO);
             } else {
                 return new ApiResponse<>(false, "UserId does not exists.");
@@ -124,6 +125,19 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    private List<TaskDTO> getTasksByUserId(Long userId) {
+        try {
+            String taskServiceUrl = "http://localhost:8081/tasks/allTasks?userId=" + userId;
+            ResponseEntity<TaskDTO[]> response = new RestTemplate().getForEntity(taskServiceUrl, TaskDTO[].class);
+            return Arrays.asList(Objects.requireNonNull(response.getBody()));
+        } catch (ResourceAccessException e) {
+            // Task service is unavailable
+            System.out.println("Task service is unavailable: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
 }
 

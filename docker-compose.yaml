@@ -34,12 +34,12 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_SHOW_SQL=true
       - JWT_SECRET=${JWT_SECRET}
-#      - KAFKA_BROKER=kafka:9092
+      - KAFKA_BROKER=kafka:9092
       - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
     networks:
       - task-management-application
-#    depends_on:
-#      - kafka
+    depends_on:
+      - kafka
 
 
   user-db:
@@ -78,44 +78,44 @@ services:
     networks:
       - task-management-application
 
-  #
-  #  notification-service:
-  #    container_name: notification-service-container
-  #    build:
-  #      context: .
-  #      dockerfile: ./services/notification-service/Dockerfile
-  #    image: notification-service
-  #    ports:
-  #      - ${NOTIFICATION_SERVICE_PORT}:8082
-  #    environment:
-  #      - KAFKA_BROKER=kafka:9092
-  #    networks:
-  #      - task-management-application
-  #    depends_on:
-  #      - kafka
 
-#  kafka:
-#    image: confluentinc/cp-kafka:latest
-#    environment:
-#      KAFKA_BROKER_ID: 1
-#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-#    ports:
-#      - 9092:9092
-#    networks:
-#      - task-management-application
-#    depends_on:
-#      - zookeeper
-#
-#  zookeeper:
-#    image: confluentinc/cp-zookeeper:latest
-#    environment:
-#      ZOOKEEPER_CLIENT_PORT: 2181
-#    ports:
-#      - 2181:2181
-#    networks:
-#      - task-management-application
+  notification-service:
+    container_name: notification-service-container
+    build:
+      context: .
+      dockerfile: ./services/notification-service/Dockerfile
+    image: notification-service
+    ports:
+      - ${NOTIFICATION_SERVICE_PORT}:8082
+    environment:
+      - KAFKA_BROKER=kafka:9092
+    networks:
+      - task-management-application
+    depends_on:
+      - kafka
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - 9092:9092
+    networks:
+      - task-management-application
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - 2181:2181
+    networks:
+      - task-management-application
 
 
 

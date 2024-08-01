@@ -17,7 +17,7 @@ public class TaskEventsListener {
     private static final String GROUP_ID = "group_id";
 
     @KafkaListener(topics = TASK_TOPIC, groupId = GROUP_ID)
-    public void listen(MessageRequest messageRequest) {
+    public void listen(String messageRequest) {
         notificationService.sendTaskNotification(messageRequest);
     }
 }

@@ -27,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
 
     @Autowired
-    private KafkaTemplate<String, MessageRequest> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
     private static final String TASK_TOPIC = "task-events";
 
@@ -136,8 +136,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private void sendNotification(String message){
-        MessageRequest messageRequest = new MessageRequest("praddeppanchal@gmail.com", "User Action", message);
-//        kafkaTemplate.send(TASK_TOPIC, messageRequest);
+        MessageRequest messageRequest = new MessageRequest("praddeppanchal@gmail.com", message);
+        kafkaTemplate.send(TASK_TOPIC, messageRequest.toString());
     }
 
 }

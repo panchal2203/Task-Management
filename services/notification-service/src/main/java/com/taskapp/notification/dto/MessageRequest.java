@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MessageRequest {
     private String emailId;
-    private String messageContent;
     private String messageHeader;
 }
