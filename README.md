@@ -1,5 +1,5 @@
 
-   **Steps to run the application:**
+   **- > Steps to run the application:**
 
 Prerequisites: Docker desktop, maven.
 
@@ -19,7 +19,7 @@ Prerequisites: Docker desktop, maven.
 5. Use http://localhost:5050/browser/ to manage user-database or task-database on pgAdmin. Refer configurations from docker-compose.yaml to add server on pgAdmin.
 
 
- **Feature: **
+ **- > Feature:**
 
 1. Functional
 
@@ -39,7 +39,7 @@ Prerequisites: Docker desktop, maven.
    - Grafana cloud extension on docker desktop is used to monitor servers.
 
 
-**High-Level Diagrams & Documentation:**
+**- > High-Level Diagrams & Documentation:**
 
 1. Architecture Diagram:
    ![Architecture Diagram](docs/architecture-diagram.png)
