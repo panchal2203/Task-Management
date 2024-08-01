@@ -3,7 +3,7 @@
 
 Prerequisites: Docker desktop, maven.
 
-1. Clone/Download the repository.
+1. Download the repository.
 
 2. Build all the microservices and run the app using docker-compose. This is done using ./start-all.sh script which creates the network and set the container dependencies based on the config mention in the docker-compose.yml and env. 
    This will build all the jar files and run all the services.
