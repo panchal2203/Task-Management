@@ -15,7 +15,7 @@ Prerequisites: Docker desktop, maven.
       ./postman_collection.json.
    ```
 
-4. Register/login user with username, password and emailId. Access token will be returned in response, pass this token as bearer token in postman to access other apis.
+4. Register user with username, password and emailId. Access token will be returned in response, pass this token as bearer token in postman to access other apis.
 5. Use http://localhost:5050/browser/ to manage user-database or task-database on pgAdmin. Refer configurations from docker-compose.yaml to create server.
 
 
