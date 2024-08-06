@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                         .requestMatchers("/users/login", "/users/register","/h2-console/**").permitAll()
-                        .requestMatchers("/delete/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/users/delete/**").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated()
 //                                .anyRequest().permitAll()
                 )

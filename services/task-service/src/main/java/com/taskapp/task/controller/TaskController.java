@@ -18,13 +18,13 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createTask(@RequestBody TaskDTO taskDTO) {
-        ApiResponse<TaskDTO> response = taskService.createTask(taskDTO);
+        ApiResponse<?> response = taskService.createTask(taskDTO);
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
-        ApiResponse<TaskDTO> response = taskService.updateTask(id, taskDTO);
+        ApiResponse<?> response = taskService.updateTask(id, taskDTO);
         return ResponseEntity.ok(response);
     }
 

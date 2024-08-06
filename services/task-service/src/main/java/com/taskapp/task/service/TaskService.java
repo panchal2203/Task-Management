@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface TaskService {
 
-    ApiResponse<TaskDTO> createTask(TaskDTO taskDTO);
+    ApiResponse<?> createTask(TaskDTO taskDTO);
 
-    ApiResponse<TaskDTO> updateTask(Long id, TaskDTO taskDTO);
+    ApiResponse<?> updateTask(Long id, TaskDTO taskDTO);
 
     ApiResponse<?> deleteTask(Long id);
 

@@ -8,6 +8,7 @@ import com.taskapp.task.entity.Task;
 import com.taskapp.task.repository.TaskRepository;
 import com.taskapp.task.util.DateUtility;
 import jakarta.transaction.Transactional;
+import org.apache.kafka.common.KafkaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class TaskServiceImpl implements TaskService {
 
     private static final String TASK_TOPIC = "task-events";
 
-    public ApiResponse<TaskDTO> createTask(TaskDTO taskDTO) {
+    public ApiResponse<?> createTask(TaskDTO taskDTO) {
         try {
             Task taskEntity = new Task();
             taskEntity.setTitle(taskDTO.getTitle());
@@ -40,15 +41,17 @@ public class TaskServiceImpl implements TaskService {
             taskEntity.setCreationDate(LocalDate.now());
             taskEntity.setUserId(taskDTO.getUserId());
             taskEntity.setDueDate(DateUtility.stringToLocalDate(taskDTO.getDueDate()));
-            Task savedEntity = taskRepository.save(taskEntity);
+            taskRepository.save(taskEntity);
             sendNotification("Task created successfully -> " + taskDTO.getTitle());
-            return new ApiResponse<>(true, "Task created successfully.", toDTO(savedEntity));
+            return new ApiResponse<>(true, "Task created successfully.");
+        } catch (KafkaException exception){
+            return new ApiResponse<>(true, "Task created successfully but failed to send notification.");
         } catch (Exception e) {
             return new ApiResponse<>(false, e.getMessage());
         }
     }
 
-    public ApiResponse<TaskDTO> updateTask(Long id, TaskDTO taskDTO) {
+    public ApiResponse<?> updateTask(Long id, TaskDTO taskDTO) {
 
         try {
             Optional<Task> taskOptional = taskRepository.findById(id);
@@ -58,14 +61,15 @@ public class TaskServiceImpl implements TaskService {
                 taskEntity.setDescription(taskDTO.getDescription());
                 taskEntity.setStatus(taskDTO.getStatus());
                 taskEntity.setDueDate(DateUtility.stringToLocalDate(taskDTO.getDueDate()));
-                Task updatedEntity = taskRepository.save(taskEntity);
-                taskDTO.setId(updatedEntity.getId());
+                taskRepository.save(taskEntity);
                 sendNotification("Task updated successfully -> " + taskDTO.getTitle());
-                return new ApiResponse<>(true, "Task updated successfully.", toDTO(updatedEntity));
+                return new ApiResponse<>(true, "Task updated successfully.");
             } else {
                 return new ApiResponse<>(false, "Task with given taskId is not present.");
             }
-        } catch (Exception e) {
+        } catch (KafkaException exception){
+            return new ApiResponse<>(true, "Task updated successfully but failed to send notification.");
+        }  catch (Exception e) {
             return new ApiResponse<>(false, e.getMessage());
         }
     }
@@ -103,7 +107,9 @@ public class TaskServiceImpl implements TaskService {
             } else {
                 return new ApiResponse<>(false, "Task with given taskId is not present.");
             }
-        } catch (Exception e) {
+        } catch (KafkaException exception){
+            return new ApiResponse<>(true, "Task completed successfully but failed to send notification.");
+        }  catch (Exception e) {
             return new ApiResponse<>(false, e.getMessage());
         }
     }
