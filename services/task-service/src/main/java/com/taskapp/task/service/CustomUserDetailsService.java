@@ -18,7 +18,7 @@ public class CustomUserDetailsService {
 
     public UserDetails loadUserByUsername(String username, String authToken) throws UsernameNotFoundException {
         try {
-            String userServiceUrl = "http://localhost:8080/users/username/" + username;
+            String userServiceUrl = "http://user-service-container:8080/users/username/" + username;
             HttpHeaders headers = new HttpHeaders();
             headers.setBearerAuth(authToken);
             HttpEntity<String> entity = new HttpEntity<>(headers);
