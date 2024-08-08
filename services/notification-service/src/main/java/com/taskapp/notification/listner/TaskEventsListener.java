@@ -1,6 +1,5 @@
 package com.taskapp.notification.listner;
 
-import com.taskapp.notification.dto.MessageRequest;
 import com.taskapp.notification.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;

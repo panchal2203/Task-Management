@@ -14,7 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService {
         try {
             String errorMessage = null;
             if (userRepository.findByUsername(userDTO.getUsername()).isPresent()) {
-                errorMessage = "Username already exists";
+                errorMessage = "Username already exists.";
             } else if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
                 errorMessage = "Email already exists";
             }
@@ -118,7 +121,7 @@ public class UserServiceImpl implements UserService {
                 userDTO.setTaskDTOList(getTasksByUserId(user.getId()));
                 return new ApiResponse<>(true, "Success.", userDTO);
             } else {
-                return new ApiResponse<>(false, "UserId does not exists.");
+                return new ApiResponse<>(false, "Username does not exists.");
             }
         } catch (Exception e) {
             return new ApiResponse<>(false, e.getMessage());

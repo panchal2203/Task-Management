@@ -1,8 +1,6 @@
 package com.taskapp.notification.service;
 
 
-
-import com.taskapp.notification.dto.MessageRequest;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -3,9 +3,6 @@ package com.taskapp.user.service;
 
 import com.taskapp.user.dto.ApiResponse;
 import com.taskapp.user.dto.UserDTO;
-import com.taskapp.user.entity.User;
-
-import java.util.List;
 
 public interface UserService {
     ApiResponse<?> registerUser(UserDTO userDTO);

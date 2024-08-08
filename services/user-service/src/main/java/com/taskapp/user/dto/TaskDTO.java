@@ -1,7 +1,5 @@
 package com.taskapp.user.dto;
 
-import java.time.LocalDateTime;
-
 public class TaskDTO {
     private Long id;
     private String title;

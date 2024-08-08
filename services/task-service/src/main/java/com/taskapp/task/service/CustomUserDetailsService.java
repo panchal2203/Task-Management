@@ -2,11 +2,9 @@ package com.taskapp.task.service;
 
 
 import com.taskapp.task.constant.Authority;
-import com.taskapp.task.dto.LoginRequest;
 import org.springframework.http.*;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
