@@ -21,7 +21,9 @@ WORKDIR /app
 COPY --from=build /app/target/user-service-1.0.0.jar user-service.jar
 
 # Specify the command to run the application
-ENTRYPOINT ["java", "-jar", "/app/user-service.jar"]
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006", "-jar", "/app/user-service.jar"]
 
 # Expose port 8080
 EXPOSE 8080
+
+EXPOSE 5006

@@ -8,6 +8,7 @@ import com.taskapp.task.entity.Task;
 import com.taskapp.task.repository.TaskRepository;
 import com.taskapp.task.util.DateUtility;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.KafkaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {
@@ -41,11 +43,14 @@ public class TaskServiceImpl implements TaskService {
             taskEntity.setDueDate(DateUtility.stringToLocalDate(taskDTO.getDueDate()));
             taskRepository.save(taskEntity);
             sendNotification("Task created successfully -> " + taskDTO.getTitle());
+            log.info("Task created successfully.");
             return new ApiResponse<>(true, "Task created successfully.");
         } catch (KafkaException exception){
+            log.error("An error occurred: {}", exception.getMessage(), exception);
             return new ApiResponse<>(true, "Task created successfully but failed to send notification.");
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -66,9 +71,11 @@ public class TaskServiceImpl implements TaskService {
                 return new ApiResponse<>(false, "Task with given taskId is not present.");
             }
         } catch (KafkaException exception){
+            log.error("An error occurred: {}", exception.getMessage(), exception);
             return new ApiResponse<>(true, "Task updated successfully but failed to send notification.");
-        }  catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        }  catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -76,8 +83,9 @@ public class TaskServiceImpl implements TaskService {
         try {
             taskRepository.deleteById(id);
             return new ApiResponse<>(true, "Task deleted successfully.");
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -86,8 +94,9 @@ public class TaskServiceImpl implements TaskService {
         try {
             List<TaskDTO> taskDTOList = taskRepository.findByUserId(userId).stream().map(this::toDTO).toList();
             return new ApiResponse<>(true, "Success.", taskDTOList);
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -106,9 +115,11 @@ public class TaskServiceImpl implements TaskService {
                 return new ApiResponse<>(false, "Task with given taskId is not present.");
             }
         } catch (KafkaException exception){
+            log.error("An error occurred: {}", exception.getMessage(), exception);
             return new ApiResponse<>(true, "Task completed successfully but failed to send notification.");
-        }  catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        }  catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -122,8 +133,9 @@ public class TaskServiceImpl implements TaskService {
             } else {
                 return new ApiResponse<>(false, "Task with given taskId is not present.");
             }
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -140,7 +152,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private void sendNotification(String message){
-        MessageRequest messageRequest = new MessageRequest("praddeppanchal@gmail.com", message);
+        MessageRequest messageRequest = new MessageRequest(message);
         kafkaTemplate.send(TASK_TOPIC, messageRequest.toString());
     }
 

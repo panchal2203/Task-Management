@@ -6,6 +6,7 @@ import com.taskapp.user.dto.LoginResponse;
 import com.taskapp.user.dto.UserDTO;
 import com.taskapp.user.security.JwtUtil;
 import com.taskapp.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,7 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -38,15 +39,16 @@ public class UserController {
             try {
                 String token = getJwtToken(userDTO.getUsername(), userDTO.getPassword());
                 response = new ApiResponse<>(true, response.getMessage(), new LoginResponse(token));
-            } catch (Exception e) {
-                response = new ApiResponse<>(false, e.getMessage());
+            } catch (Exception exception) {
+                log.error("An error occurred: {}", exception.getMessage(), exception);
+                response = new ApiResponse<>(false, exception.getMessage());
             }
         }
         return ResponseEntity.ok(response);
 
     }
 
-    private String getJwtToken(String username, String password) {
+    public String getJwtToken(String username, String password) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         username,
@@ -64,8 +66,9 @@ public class UserController {
         try {
             String token = getJwtToken(loginRequest.getUsername(), loginRequest.getPassword());
             response = new ApiResponse<>(true, "User logged in successfully", new LoginResponse(token));
-        } catch (Exception e) {
-            response = new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            response = new ApiResponse<>(false, exception.getMessage());
         }
         return ResponseEntity.ok(response);
     }

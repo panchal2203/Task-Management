@@ -20,8 +20,11 @@ WORKDIR /app
 # Copy the JAR file from the build stage
 COPY --from=build /app/target/task-service-1.0.0.jar task-service.jar
 
-# Specify the command to run the application
-ENTRYPOINT ["java", "-jar", "/app/task-service.jar"]
+# Specify the command to run the application with remote debugging enabled
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "/app/task-service.jar"]
 
 # Expose port 8080
 EXPOSE 8081
+
+# Expose the debug port
+EXPOSE 5005

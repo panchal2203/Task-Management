@@ -8,7 +8,9 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "tasks")
+@Table(name = "tasks", indexes = {
+        @Index(name = "idx_userid", columnList = "userId")
+})
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +19,7 @@ public class Task {
     @Column(nullable = false)
     private String title;
 
+    @Column(length = 4000)
     private String description;
 
     @Enumerated(EnumType.STRING)

@@ -7,6 +7,7 @@ import com.taskapp.user.dto.UserDTO;
 import com.taskapp.user.entity.User;
 import com.taskapp.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +20,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Slf4j
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -29,14 +32,13 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
 
-    @Transactional
     public ApiResponse<?> registerUser(UserDTO userDTO) {
         try {
             String errorMessage = null;
             if (userRepository.findByUsername(userDTO.getUsername()).isPresent()) {
                 errorMessage = "Username already exists.";
             } else if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
-                errorMessage = "Email already exists";
+                errorMessage = "Email already exists.";
             }
             if (errorMessage == null) {
                 User user = new User();
@@ -50,6 +52,7 @@ public class UserServiceImpl implements UserService {
                 return new ApiResponse<>(false, errorMessage);
             }
         } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
             return new ApiResponse<>(false, exception.getMessage());
         }
     }
@@ -72,6 +75,7 @@ public class UserServiceImpl implements UserService {
                 return new ApiResponse<>(false, "UserId does not exists.");
             }
         } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
             return new ApiResponse<>(false, exception.getMessage());
         }
 
@@ -86,8 +90,9 @@ public class UserServiceImpl implements UserService {
             } else {
                 return new ApiResponse<>(false, "UserId does not exists.");
             }
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -104,8 +109,9 @@ public class UserServiceImpl implements UserService {
             } else {
                 return new ApiResponse<>(false, "UserId does not exists.");
             }
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -123,8 +129,9 @@ public class UserServiceImpl implements UserService {
             } else {
                 return new ApiResponse<>(false, "Username does not exists.");
             }
-        } catch (Exception e) {
-            return new ApiResponse<>(false, e.getMessage());
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
+            return new ApiResponse<>(false, exception.getMessage());
         }
     }
 
@@ -133,11 +140,10 @@ public class UserServiceImpl implements UserService {
             String taskServiceUrl = "http://localhost:8081/tasks/allTasks?userId=" + userId;
             ResponseEntity<TaskDTO[]> response = new RestTemplate().getForEntity(taskServiceUrl, TaskDTO[].class);
             return Arrays.asList(Objects.requireNonNull(response.getBody()));
-        } catch (ResourceAccessException e) {
-            // Task service is unavailable
-            System.out.println("Task service is unavailable: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (ResourceAccessException exception) {
+            log.error("Task service is unavailable: {}", exception.getMessage(), exception);
+        } catch (Exception exception) {
+            log.error("An error occurred: {}", exception.getMessage(), exception);
         }
         return null;
     }

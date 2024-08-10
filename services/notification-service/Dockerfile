@@ -21,7 +21,9 @@ WORKDIR /app
 COPY --from=build /app/target/notification-service-1.0.0.jar notification-service.jar
 
 # Specify the command to run the application
-ENTRYPOINT ["java", "-jar", "/app/notification-service.jar"]
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007", "-jar", "/app/notification-service.jar"]
 
 # Expose port 8082
 EXPOSE 8082
+
+EXPOSE 5007

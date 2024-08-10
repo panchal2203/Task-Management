@@ -7,6 +7,7 @@ services:
     image: user-service
     ports:
       - ${USER_SERVICE_PORT}:8080
+      - 5006:5006
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://user-db:5432/userdb
       - SPRING_DATASOURCE_USERNAME=${USER_DB_USERNAME}
@@ -87,8 +88,14 @@ services:
     image: notification-service
     ports:
       - ${NOTIFICATION_SERVICE_PORT}:8082
+      - 5007:5007
     environment:
       - KAFKA_BROKER=kafka:9092
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://task-db:5432/taskdb
+      - SPRING_DATASOURCE_USERNAME=${TASK_DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${TASK_DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
     networks:
       - task-management-application
     depends_on:
