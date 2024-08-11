@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b8c946fb-fd28-408e-9e4b-c45e2b5e2146",
+		"_postman_id": "85006b07-0c2d-4e0d-a576-5b2dcfd34ed3",
 		"name": "Task Management",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26061126"
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"pradeep1\",\n    \"password\": \"pradeep12\",\n    \"email\" : \"pradeep1@gamil.com\"\n}",
+							"raw": "{\n    \"username\": \"pradeep2\",\n    \"password\": \"pradeep12\",\n    \"email\" : \"pradeep2@gamil.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"pradeep\",\n    \"password\": \"pradeep12\"\n}",
+							"raw": "{\n    \"username\": \"pradeep2\",\n    \"password\": \"pradeep12\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -85,7 +85,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUyODEyLCJpYXQiOjE3MjI1MTY4MTJ9.bWV-vC-G5KIw6UCAL0GEz41J3gcv-PD7V1golBI_GD0",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -94,7 +94,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"pradeep12\",\n    \"email\" : \"pradeep@gamil.com\"\n}",
+							"raw": "{\n    \"email\" : \"newpradeep@gamil.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -124,7 +124,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUxODU2LCJpYXQiOjE3MjI1MTU4NTZ9.5HaLTX07wq7DcHmoElXh90Uwo-8QvoSXqCQUJVIan6A",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -141,7 +141,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/delete/2",
+							"raw": "http://localhost:8080/users/delete/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -150,7 +150,7 @@
 							"path": [
 								"users",
 								"delete",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -167,7 +167,50 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwIiwiZXhwIjoxNzIyNTUyODEyLCJpYXQiOjE3MjI1MTY4MTJ9.bWV-vC-G5KIw6UCAL0GEz41J3gcv-PD7V1golBI_GD0",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/username/pradeep2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"username",
+								"pradeep2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzE3MTgyNSwiaWF0IjoxNzIzMTM1ODI1fQ.sNKPNmHiMpt9fg92ArQqU7de-EiGFSvb7bWiaSU280s",
 									"type": "string"
 								}
 							]
@@ -211,7 +254,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTExMSIsImV4cCI6MTcyMjU1MTcxMCwiaWF0IjoxNzIyNTE1NzEwfQ.JXWnhX54fgUJZiPMjl2uEdlI3x5WoJ575-s0Lu5E8Zc",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -249,7 +292,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -258,7 +301,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"task\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"30-08-2024\",\n    \"userId\":\"1\"\n}",
+							"raw": "{\n    \"title\": \"task\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"15-08-2024\",\n    \"userId\":\"1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,7 +309,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/tasks/1",
+							"raw": "http://localhost:8081/tasks/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -274,7 +317,7 @@
 							"port": "8081",
 							"path": [
 								"tasks",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -288,7 +331,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -327,7 +370,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTEiLCJleHAiOjE3MjI1NDM1MjgsImlhdCI6MTcyMjUwNzUyOH0.AVgOIEbWsP2n0yMdX6kyJsTLgpm67R7fP6iTulOEY_Q",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -344,7 +387,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/tasks/2/complete",
+							"raw": "http://localhost:8081/tasks/1/complete",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -352,7 +395,7 @@
 							"port": "8081",
 							"path": [
 								"tasks",
-								"2",
+								"1",
 								"complete"
 							]
 						}
@@ -370,7 +413,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW5rdTExMSIsImV4cCI6MTcyMjU1MTcxMCwiaWF0IjoxNzIyNTE1NzEwfQ.JXWnhX54fgUJZiPMjl2uEdlI3x5WoJ575-s0Lu5E8Zc",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMiIsImV4cCI6MTcyMzQyOTkyNSwiaWF0IjoxNzIzMzkzOTI1fQ.rUhqjSjkB5pybQzFxtm-Al2LfCI_JaHa4LMax22Vw_s",
 									"type": "string"
 								}
 							]
@@ -387,7 +430,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/tasks/allTasks?userId=2",
+							"raw": "http://localhost:8081/tasks/allTasks?userId=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -400,8 +443,406 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "2"
+									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "register Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"pradeep1\",\n    \"password\": \"pradeep12\",\n    \"email\" : \"pradeep1@gamil.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzM5NDA0MSwiaWF0IjoxNzIzMzU4MDQxfQ.kHYjzu9WGe2707TiqiiJjGKeQ0Qt1wyVtCC3WOryMC0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"pradeep1\",\n    \"password\": \"pradeep12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"pradeep12\",\n    \"email\" : \"11pradeep@gamil.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/users/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Task Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"task 1\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"30-07-2024\",\n    \"userId\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tasks Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/tasks/allTasks?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"tasks",
+								"allTasks"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"task\",\n    \"description\" : \"get the packege from market\",\n    \"dueDate\": \"12-08-2024\",\n    \"userId\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/tasks/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"tasks",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/tasks/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"tasks",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Task Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFkZWVwMSIsImV4cCI6MTcyMzQzMDA5OSwiaWF0IjoxNzIzMzk0MDk5fQ.dIQzMMxRYK3LqR3JRQbgWg8kICDBjVJ6LyRg6Q6Bmmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/tasks/2/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"tasks",
+								"2",
+								"complete"
 							]
 						}
 					},
