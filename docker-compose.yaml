@@ -1,4 +1,5 @@
 services:
+
   user-service:
     container_name: user-service-container
     build:
@@ -6,7 +7,7 @@ services:
       dockerfile: ./services/user-service/Dockerfile
     image: user-service
     ports:
-      - ${USER_SERVICE_PORT}:8080
+      - 8080:8080
       - 5006:5006
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://user-db:5432/userdb
@@ -26,7 +27,7 @@ services:
       dockerfile: ./services/task-service/Dockerfile
     image: task-service
     ports:
-      - ${TASK_SERVICE_PORT}:8081
+      - 8081:8081
       - 5005:5005
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://task-db:5432/taskdb
@@ -51,7 +52,7 @@ services:
       - POSTGRES_USER=${USER_DB_USERNAME}
       - POSTGRES_PASSWORD=${USER_DB_PASSWORD}
     ports:
-      - ${USER_DB_PORT}:5433
+      - 5433:5433
     networks:
       - task-management-application
 
@@ -63,7 +64,7 @@ services:
       - POSTGRES_USER=${TASK_DB_USERNAME}
       - POSTGRES_PASSWORD=${TASK_DB_PASSWORD}
     ports:
-      - ${TASK_DB_PORT}:5434
+      - 5434:5434
     networks:
       - task-management-application
 
@@ -75,7 +76,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
       - PGADMIN_CONFIG_SERVER_MODE=False
     ports:
-      - ${PGADMIN_PORT}:80
+      - 5050:80
     networks:
       - task-management-application
 
@@ -87,7 +88,7 @@ services:
       dockerfile: ./services/notification-service/Dockerfile
     image: notification-service
     ports:
-      - ${NOTIFICATION_SERVICE_PORT}:8082
+      - 8082:8082
       - 5007:5007
     environment:
       - KAFKA_BROKER=kafka:9092
@@ -124,6 +125,18 @@ services:
     networks:
       - task-management-application
 
+
+  api-gateway:
+    container_name: api-gateway-container
+    build:
+      context: .
+      dockerfile: ./services/api-gateway/Dockerfile
+    image: api-gateway
+    ports:
+      - 8084:8084
+      - 5008:5008
+    networks:
+      - task-management-application
 
 
 networks:
